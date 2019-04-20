@@ -153,5 +153,4 @@ class Todo(Resource):
     td = user.update_todo(todo_id=todo_id, new_status=new_status)
     return {"message" : "Success.", "todo" : {"id" : td.id, "status": td.status , "body" : td.body, "created" : f"{td.created_at}", "owner" : td.user.username }, "meta" : api_docs}
 
- 
-    
+

@@ -2,7 +2,9 @@ from flask import render_template
 from flask_restful import Api, reqparse
 from models import app
 from resources import UserAuthentication, UserRefreshToken, UserRegistration, UserLogout, Todos, Todo
+from flask_moment import Moment
 
+moment = Moment(app)
 
 api = Api(app)
 api.add_resource(UserRegistration, '/registration')
