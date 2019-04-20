@@ -17,3 +17,6 @@ Stack:
 
 
 More details of modules used in the [requirements.txt file](https://github.com/j-000/apibuilder/blob/master/requirements.txt). 
+
+### API guide
+![alt text](https://github.com/j-000/apibuilder/blob/master/static/repo_images/c2.PNG "todoAPI API guide")

@@ -30,7 +30,7 @@ class UserRegistration(Resource):
     if email_exists:
       return {"message" : f"{email} is already registered. If you need to reset your password, check the docs.", "meta" : api_docs}
     new_user = User.create_new(username, email, password)
-    return {"username" : new_user.username, "email": new_user.email, "created at" : str(datetime.now()), "meta" : api_docs }
+    return {"message":"Success. User created." , "username" : new_user.username, "email": new_user.email, "created at" : str(datetime.now()), "meta" : api_docs }
 
 
 class UserAuthentication(Resource):
@@ -151,6 +151,6 @@ class Todo(Resource):
     if not todo:
       return {"message": f"Could not find todo with an id of '{todo_id}'.", "meta" : api_docs}, 404
     td = user.update_todo(todo_id=todo_id, new_status=new_status)
-    return {"message" : "Success.", "todo" : {"id" : td.id, "status": td.status , "body" : td.body, "created" : f"{td.created_at}", "owner" : td.user.username }, "meta" : api_docs}
+    return {"logged in as": f"{user.username} {user.email}","message" : "Success.", "todo" : {"id" : td.id, "status": td.status , "body" : td.body, "created" : f"{td.created_at}", "owner" : td.user.username }, "meta" : api_docs}
 
 

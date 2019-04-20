@@ -1,10 +1,319 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<h1>Welcome to the APIbuilder</h1>
-<h2>Unlike the name says, you will not be builsing an API. Sorry to disappoint you...</h2>
-<h2>But you can and should play around with the one I created. See below how to get started.</h2>
+<h1><span class="text-info">todoAPI</span> documentation</h1> 
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle"
+          type="button" id="dropdownMenu1" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+    Endpoints
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <a href="javascript:scroll('registration')" class="dropdown-item">/registration</a>
+      <a href="javascript:scroll('authentication')" class="dropdown-item">/authentication</a>
+      <a href="javascript:scroll('refresh')" class="dropdown-item">/refresh</a>
+      <a href="javascript:scroll('todos')" class="dropdown-item">/todos</a>
+      <a href="javascript:scroll('todo')" class="dropdown-item">/todo/{todo_id}</a>
+  </div>
+</div>
+<hr>
 
-<h3>POST /authentication</h3>
-<p>...</p>
+<div class="row">
+  <div class="col">
+    <h2 id="registration">/registration</h2>
+    <div class="card-deck">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-warning">POST</span>
+          <span class="badge badge-primary">Content-Type application/json </span>
+        </div>
+        <div class="card-body">
+          <p>Register to use the API. Your password will be hashed and salted before stored.</p>
+          <h4 class="card-title"><span class="badge badge-info">Data</span></h4>
+          <p class="card-text"><pre  id="r19"></pre></p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r20"></pre></p>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <div class="col">
+    <h2 id="authentication">/authentication</h2>
+    <div class="card-deck">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-warning">POST</span>
+          <span class="badge badge-primary">Content-Type application/json </span>
+        </div>
+        <div class="card-body">
+          <p>Remember, your token is only valid for 1 hour. The token will be invalidated if a bad request is performed. You will need to re-authenticate again if that is the case.</p>
+          <h4 class="card-title"><span class="badge badge-info">Data</span></h4>
+          <p class="card-text"><pre  id="r21"></pre></p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r22"></pre></p>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h2 id="refresh">/refresh</h2>
+    <div class="card-deck">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-warning">POST</span>
+          <span class="badge badge-primary">Content-Type application/json </span>
+          <span class="badge badge-primary">Authorization Bearer {token} </span>
+        </div>
+        <div class="card-body">
+          <p>Refresh your token before it expires. The token is valid for 1 hour.</p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r23"></pre></p>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <div class="col">
+      <h2 id="logout">/logout</h2>
+      <div class="card-deck">
+        <div class="card border-primary mb-3">
+          <div class="card-header">
+            <span class="badge badge-warning">POST</span>
+            <span class="badge badge-primary">Content-Type application/json </span>
+            <span class="badge badge-primary">Authorization Bearer {token} </span>
+          </div>
+          <div class="card-body">
+            <p>Logout. Your token will be invalidated and cannot be used again.</p>
+            <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+            <p class="card-text"><pre  id="r24"></pre></p>
+          </div>
+        </div>  
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h2 id="todos">/todos</h2>
+    <div class="card-deck">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-success">GET</span>
+          <span class="badge badge-primary">Authorization Bearer {token} </span>
+        </div>
+        <div class="card-body">
+          <p>Get the todos list.</p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r11"></pre></p>
+        </div>
+      </div>
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-warning">POST</span>
+          <span class="badge badge-primary">Content-Type application/json </span>
+          <span class="badge badge-primary">Authorization Bearer {token} </span>
+        </div>
+        <div class="card-body">
+          <p>Create a todo. Don't forget all the parameters listed, otherwise it won't work.</p>
+          <h4 class="card-title"><span class="badge badge-info">Data</span></h4>
+          <p class="card-text"><pre  id="r12"></pre></p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r13"></pre></p>
+        </div>
+      </div>
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-danger">DELETE</span>
+          <span class="badge badge-primary">Authorization Bearer {token} </span>
+        </div>
+        <div class="card-body">
+          <p>Delete <span class="text-danger">all</span> todos. There is no confirmation step, so use with caution.</p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r14"></pre></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h2 id="todo">/todo/{todo_id}</h2>
+    <div class="card-deck">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-success">GET</span>
+          <span class="badge badge-primary">Authorization Bearer {token} </span>
+        </div>
+        <div class="card-body">
+          <p>Get a single todo.</p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r15"></pre></p>
+        </div>
+      </div>
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-secondary">PUT</span>
+          <span class="badge badge-primary">Content-Type application/json </span>
+          <span class="badge badge-primary">Authorization Bearer {token} </span>
+        </div>
+        <div class="card-body">
+          <p>Update a todo status. Only one parameter is required.</p>
+          <h4 class="card-title"><span class="badge badge-info">Data</span></h4>
+          <p class="card-text"><pre  id="r16"></pre></p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r17"></pre></p>
+        </div>
+      </div>
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <span class="badge badge-danger">DELETE</span>
+          <span class="badge badge-primary">Authorization Bearer {token} </span>
+        </div>
+        <div class="card-body">
+          <p>Delete a single todo. There is no confirmation step, so use with caution.</p>
+          <h4 class="card-title"><span class="badge badge-success">200</span></h4>
+          <p class="card-text"><pre  id="r18"></pre></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock body %}
+{% block extrajs %}
+<script type="text/javascript">
+  r11 = {
+  "logged in as": "j-000 someone@example.com",
+  "todos": [
+      {
+          "id": 2,
+          "status": "Not done",
+          "body": "Study for SAD I!",
+          "created": "2019-04-20 15:50:23.758906",
+          "owner": "j-000"
+      },
+      {"(...)" : "(...)"},
+      {
+          "id": 4,
+          "status": "Completed",
+          "body": "Hello, world",
+          "created": "2019-04-20 15:50:23.758906",
+          "owner": "j-000"
+      }
+  ],
+  "total": 3,
+  "meta": "(...)"
+}
+  r13 = {
+      "logged in as": "j-000 someone@example.com",
+      "message": "Success. Todo created.",
+      "todo": {
+          "id": 4,
+          "body": "Hello, world",
+          "status": "Completed",
+          "owner": "j-000",
+          "created": "2019-04-20 15:50:23.758906"
+      },
+      "meta": "(...)"
+  }
+  r12 = {
+    "body" : "Hello, world",
+    "status" : "Completed"
+  }
+  r14 = {
+    "logged in as": "j-000 someone@example.com",
+    "message": "Success. All todos deleted.",
+    "meta": "(...)"
+  }
+  r15 = {
+    "logged in as": "j-000 someone@example.com",
+    "message": "Success.",
+    "todo": {
+        "id": 2,
+        "status": "Not done",
+        "body": "Study for SAD I!",
+        "created": "2019-04-20 15:50:23.758906",
+        "owner": "j-000"
+    },
+    "meta": "(...)"
+}
+  r16 = {
+    "status" : "Task done!"
+  }
+  r17 = {
+    "logged in as": "j-000 someone@example.com",
+    "message": "Success.",
+    "todo": {
+        "id": 2,
+        "status": "Task done!",
+        "body": "Study for SAD I!",
+        "created": "2019-04-20 15:50:23.758906",
+        "owner": "j-000"
+    },
+    "meta": "(...)"
+}
+  r18 = {
+    "logged in as": "j-000 someone@example.com",
+    "message": "Success. Todo id 2 deleted.",
+    "meta": ("...")
+}
+  r19 = {
+    "username": "j-000", "email" :"someone@example.com ", "password" : "mysecret"}
+  r20 = {
+    "message" :"Success. User created.",
+    "username": "j-000",
+    "email": "someone@example.com",
+    "created at": "2019-04-20 14:37:55.346840",
+    "meta": "(...)"
+  }
+  r21 = {
+    "username": "j-000", "email" :"someone@example.com ", "password" : "mysecret"}
+  r22 = {
+    "message": "Success.",
+    "token": "eyJ0eXAiOiJKV1(...)6lhoqPJhaRVp1NldssAyLHQOwz4ylQ",
+    "expires": {
+        "in": 3600,
+        "units": "seconds"
+    },
+    "meta": "(...)"
+}
+  r23 = {
+    "logged in as": "j-000 someone@example.com",
+    "message": "Success.",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbODM(...)iFRsZX9J1PdranRU-Xb0",
+    "expires": {
+        "in": 3600,
+        "units": "seconds"
+    },
+    "meta": "(...)"
+}  
+  r24 = {
+    "message": "Success. You have now logged out.",
+    "meta": "(...)"
+}
+
+  var a = [
+    [r11,'r11'],
+    [r12,'r12'],
+    [r13,'r13'],
+    [r14,'r14'],
+    [r15,'r15'],
+    [r16,'r16'],
+    [r17,'r17'],
+    [r18,'r18'],
+    [r19,'r19'],
+    [r20,'r20'],
+    [r21, 'r21'],
+    [r22, 'r22'], [r23, 'r23'], [r24, 'r24']];
+  
+  a.forEach(function(e){
+    $('#' + e[1]).html(JSON.stringify(e[0], undefined, 3));
+  });
+</script>
+<script type="text/javascript">  
+  function scroll(e){document.getElementById(e).scrollIntoView({behavior: "smooth"});}
+</script>
+{% endblock %}
