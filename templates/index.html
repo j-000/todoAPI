@@ -1,10 +1,55 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<h1>Welcome to the APIbuilder</h1>
-<h2>Unlike the name says, you will not be builsing an API. Sorry to disappoint you...</h2>
-<h2>But you can and should play around with the one I created. See below how to get started.</h2>
-
-<h3>POST /authentication</h3>
-<p>...</p>
-{% endblock body %}
+<h1>Welcome to the <span class="text-info">todoAPI</span></h1>
+<p>Start by sigining up to use the API. If you wish to contribute to this project you can contact me via github.</p>
+<hr>
+<div class="row">
+  <div class="col">
+    <h4>Registration</h4>
+    <div class="row">
+      <div class="col"><span class="badge badge-warning">POST</span>
+      <span class="badge badge-primary">/registration</span>
+      <span class="badge badge-primary">Content-Type application/json</span></div>
+    </div>
+    <pre class="pre1"></pre>
+    <h5><span class="badge badge-success">200</span></h5>
+    <pre id="pre1res"></pre>
+  </div>
+  <div class="col">
+    <h4>Login</h4>
+    <div class="row">
+      <div class="col"><span class="badge badge-warning">POST</span>
+      <span class="badge badge-primary">/authentication</span>
+      <span class="badge badge-primary">Content-Type application/json</span></div>
+    </div>
+    <pre class="pre1"></pre>
+    <h5><span class="badge badge-success">200</span></h5>
+    <pre id="pre2res"></pre>
+  </div>
+ 
+</div>
+{% endblock %}
+{% block extrajs %}
+<script>
+  req = {"username": "j-000", "email" :"someone@example.com ", "password" : "mysecret"}
+  res = {
+    "username": "j-000",
+    "email": "someone@example.com",
+    "created at": "2019-04-20 14:37:55.346840",
+    "meta": "(...)"
+  }
+  res2 = {
+    "message": "Success.",
+    "token": "eyJahqhxbalqk17b(...)1Okl5zcMkn2QZg",
+    "expires": {
+        "in": 3600,
+        "units": "seconds"
+    },
+    "meta": "(...)"
+}
+  $('.pre1').html(JSON.stringify(req, undefined, 3));
+  $('#pre1res').html(JSON.stringify(res, undefined, 3));
+  $('#pre2res').html(JSON.stringify(res2, undefined, 3));
+</script>
+{% endblock %}

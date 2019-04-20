@@ -21,8 +21,11 @@ def index():
 
 @app.route('/docs', methods=['GET'])
 def documentation():
-  return render_template('index.html')
+  return render_template('documentation.html')
 
+@app.route('/playground', methods=['GET','POST'])
+def playground():
+  return render_template('playground.html')
 
 # Start app
 if __name__ == '__main__':

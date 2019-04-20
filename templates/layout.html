@@ -4,7 +4,7 @@
     <title>todoAPI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='shortcut icon' type='image/x-icon' href='{{ url_for("static", filename="images/favicon.ico") }}' />
-    <link href="{{ url_for('static', filename='css/bootstrap2.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800" rel="stylesheet" type="text/css">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
@@ -18,9 +18,38 @@
     {{ moment.include_moment() }}
   </head>
 <body>
-  {% block body %}{% endblock body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="{{ url_for('index') }}">todoAPI</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li onclick="makeActive($(this))" class="nav-item active">
+            <a class="nav-link" href="{{ url_for('playground') }}">Playground</a>
+          </li>
+          <li onclick="makeActive($(this))" class="nav-item">
+            <a class="nav-link" href="{{ url_for('documentation') }}">Docs</a>
+          </li>
+          <li onclick="makeActive($(this))" class="nav-item">
+            <a class="nav-link" href="https://github.com/j-000/apibuilder" target="_blank">On Github</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+        {% block body %}{% endblock body %}
+    </div>
   {% block extrajs %}{% endblock extrajs %} 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script>
+    function makeActive(e){
+      li = document.getElementsByClassName('nav-item');
+      for(let el of li) {$(el).removeClass('active')};
+      e.addClass('active');
+    }
+  </script>
 </body>
 </html>
