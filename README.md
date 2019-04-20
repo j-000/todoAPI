@@ -35,6 +35,6 @@ I assume you already have a virtual environment up and running. For details, che
 Feel free to contribute and make suggestions.
 
 ### A few ideas for improvement 
-[] Comprehensive unit tests
-[] Playground area to test the API
-[] Content managemen system / admin area to manage the API guide
+[ ] Comprehensive unit tests
+[ ] Playground area to test the API
+[ ] Content managemen system / admin area to manage the API guide
