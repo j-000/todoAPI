@@ -20,3 +20,16 @@ More details of modules used in the [requirements.txt file](https://github.com/j
 
 ### API guide
 ![alt text](https://github.com/j-000/apibuilder/blob/master/static/repo_images/c2.PNG "todoAPI API guide")
+
+### Try it locally (on windows 10)
+I assume you already have a virtual environment up and running. For details, check [python virtualenv](https://virtualenv.pypa.io/en/stable/installation/)
+
+```
+(venv) git clone https://github.com/j-000/todoAPI
+(venv) cd todoAPI
+(venv) python dbhelper.py
+(venv) python app.py
+// running on localhost:5000 
+```
+
+Feel free to contribute and make suggestions.
