@@ -1,17 +1,16 @@
 from flask import render_template
 from flask_restful import Api, reqparse
-from flask_jwt_extended import JWTManager
 from models import app
-from resources import UserAuthentication, UserRefreshToken, UserRegistration, UserLogout, Todo
+from resources import UserAuthentication, UserRefreshToken, UserRegistration, UserLogout, Todos, Todo
 
 
 api = Api(app)
-jwt = JWTManager(app)
 api.add_resource(UserRegistration, '/registration')
 api.add_resource(UserAuthentication, '/authentication')
 api.add_resource(UserRefreshToken, '/refresh')
 api.add_resource(UserLogout, '/logout')
-api.add_resource(Todo, '/todos')
+api.add_resource(Todos, '/todos')
+api.add_resource(Todo, '/todo/<string:todo_id>')
 
 
 @app.route('/', methods=['GET', 'POST'])
