@@ -25,12 +25,12 @@ class UserRegistration(Resource):
     email = data['email']
     password = data['password']
     if not username or not email or not password:
-      return {"message" : "Some parameters are missing. You need 'username', 'email' and 'password'.", "meta" : api_docs}
+      return {"message" : "Some parameters are missing. You need 'username', 'email' and 'password'.", "meta" : api_docs}, 400
     email_exists = User.fetch(email=email)
     if email_exists:
-      return {"message" : f"{email} is already registered. If you need to reset your password, check the docs.", "meta" : api_docs}
+      return {"message" : f"{email} is already registered. If you need to reset your password, check the docs.", "meta" : api_docs}, 400
     new_user = User.create_new(username, email, password)
-    return {"message":"Success. User created." , "username" : new_user.username, "email": new_user.email, "created at" : str(datetime.now()), "meta" : api_docs }
+    return {"message":"Success. User created." , "username" : new_user.username, "email": new_user.email, "created at" : str(datetime.now()), "meta" : api_docs }, 200
 
 
 class UserAuthentication(Resource):
