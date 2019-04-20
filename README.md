@@ -49,7 +49,7 @@ In the terminal, start by running:
 (venv) python dbhelper.py
 (venv) python app.py
 ```
-In another terminal pannel then run:
+In another terminal panel then run:
 ```
 (venv) cd tests
 (venv) python test_api.py -v
