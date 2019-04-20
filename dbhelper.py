@@ -5,11 +5,11 @@ def start_db():
   db.create_all()
 
 def create_user():
-  new_user = User.create_new(username='joao', email='j@j.j', password='tina123')
+  new_user = User.create_new(username='test', email='test@test.com', password='test')
 
 def create_todos():
-  todo1 = TodoModel.create_new("Wash the dishes!", 1, "not done")
-  todo2 = TodoModel.create_new("Study for exam!", 1, "not done")
+  todo1 = TodoModel.create_new("Wash the dishes!", 1, "Not done.")
+  todo2 = TodoModel.create_new("Study for exam!", 1, "Not done.")
 
 if __name__ == "__main__":
   start_db()

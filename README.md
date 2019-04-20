@@ -31,6 +31,14 @@ I assume you already have a virtual environment up and running. For details, che
 (venv) python app.py
 // running on localhost:5000 
 ```
+By default one user and one todo are created when `(venv) python dbhelper.py` is ran. This user's details are:
+```
+{
+    "username": "test",
+    "email" : "test@test.com",
+    "password": "test"
+}
+```
 
 Feel free to contribute and make suggestions.
 
