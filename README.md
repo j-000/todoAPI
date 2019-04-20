@@ -41,6 +41,26 @@ By default one user and one todo are created when `(venv) python dbhelper.py` is
 }
 ```
 
+### Testing
+Clone the repo and activate the virtua env. You will need 2 terminals. One to start the server and the other one to run the tests.
+In the terminal, start by running `(venv) python dbhelper.py` to start the database. Then start the app with `(venv) python app.py`.
+```
+(venv) python dbhelper.py
+(venv) python app.py
+```
+In another temrinal pannel, run:
+```
+(venv) cd tests
+(venv) python test_api.py -v
+// (...)
+// test_registration_user_exists (__main__.TestEndPoints)
+// User exists ... ok
+// ----------------------------------------------------------------------
+// Ran 4 tests in 6.515s
+// OK
+```
+
+
 Feel free to contribute and make suggestions.
 
 ### A few ideas for improvement 
