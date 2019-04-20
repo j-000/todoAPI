@@ -15,6 +15,7 @@ Stack:
 + DB Migrations done via Flask-Migrate
 + [Bootstrap layout from Bootswatch](https://bootswatch.com/flatly)
 + JWT from PYJwt
++ Tested with Python unittest 
 
 
 More details of modules used in the [requirements.txt file](https://github.com/j-000/apibuilder/blob/master/requirements.txt). 
