@@ -65,6 +65,5 @@ In another temrinal pannel then run:
 Feel free to contribute and make suggestions.
 
 ### A few ideas for improvement 
-- [ ] Comprehensive unit tests
 - [ ] Playground area to test the API
 - [ ] Content managemen system / admin area to manage the API guide
